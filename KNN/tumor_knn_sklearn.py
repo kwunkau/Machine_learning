@@ -15,22 +15,26 @@ raw_data_X = [[3.393533211, 2.331273381],
               [9.172112222, 2.511113104],
               [7.927841231, 3.421455345],
               [7.939831414, 0.791631213]
-             ]
+              ]
 raw_data_y = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
 # 设置训练组
 X_train = np.array(raw_data_X)
 y_train = np.array(raw_data_y)
 
 # 把数据分成训练数据和测试数据
-x=[8.90933607318, 3.365731514]
-X_test = np.array(x)
-y_test
+raw_test_x = [[8.90933607318,3.365731514]
+              ]
+
+raw_test_y = [0]
+X_test = np.array(raw_test_x)
+y_test = np.array(raw_test_y)
 
 # 构建KNN模型， K值为3、 并做训练
-clf = KNeighborsClassifier(n_neighbors=3)
+clf = KNeighborsClassifier(n_neighbors=6)
 clf.fit(X_train, y_train)
+print("预测值：%.2f" % (np.count_nonzero(clf.predict(X_test))))
 
 # 计算准确率
-correct = np.count_nonzero((clf.predict(X_test)==y_test)==True)
-#accuracy_score(y_test, clf.predict(X_test))
-print ("Accuracy is: %.3f" %(correct/len(X_test)))
+correct = np.count_nonzero((clf.predict(X_test) == y_test) == True)
+accuracy_score(y_test, clf.predict(X_test))
+print("准确率(Accuracy) is: %.3f" % (correct / len(X_test)))

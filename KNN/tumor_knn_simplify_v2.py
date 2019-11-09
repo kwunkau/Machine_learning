@@ -68,7 +68,8 @@ if __name__ == '__main__':
     knn_clf = kNNClassifier(k=6)
     knn_clf.fit(X_train, y_train)
     # 判断x是良性肿瘤还是恶性肿瘤
-    x = np.array([8.90933607318,3.365731514])
+    raw_test_x = [[8.90933607318, 3.365731514]]
+    x = np.array(raw_test_x)
     X_predict = x.reshape(1, -1)
     y_predict = knn_clf.predict(X_predict)
     print(y_predict)
